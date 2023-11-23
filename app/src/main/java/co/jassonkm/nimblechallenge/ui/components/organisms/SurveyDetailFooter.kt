@@ -1,0 +1,29 @@
+package co.jassonkm.nimblechallenge.ui.components.organisms
+
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
+import co.jassonkm.nimblechallenge.ui.components.molecules.ButtonSurvey
+
+@Composable
+fun SurveyDetailFooter(onClickStart: () -> Unit) {
+    Column(
+        modifier = Modifier.fillMaxWidth()
+            .padding(horizontal = 16.dp),
+        verticalArrangement = Arrangement.Bottom,
+        horizontalAlignment = Alignment.End
+    ) {
+        ButtonSurvey (onClick = onClickStart)
+    }
+}
+@Preview
+@Composable
+fun SurveyDetailFooterPreview() {
+    SurveyDetailFooter(onClickStart = {})
+}
