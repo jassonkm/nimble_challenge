@@ -16,6 +16,7 @@ import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import co.jassonkm.nimblechallenge.ui.theme.BlackGrey
+import co.jassonkm.nimblechallenge.ui.theme.White
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -33,7 +34,7 @@ fun TextFieldPassword(
             .height(58.dp),
         textStyle = TextStyle(
             fontSize = 14.sp,
-            color = BlackGrey,
+            color = White,
             fontWeight = FontWeight(400)
         ), singleLine = true,
         placeholder = { Text(text = "Password") },

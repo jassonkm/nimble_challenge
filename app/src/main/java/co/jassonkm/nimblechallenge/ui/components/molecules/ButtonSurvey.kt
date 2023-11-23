@@ -16,9 +16,10 @@ import co.jassonkm.nimblechallenge.ui.theme.Black
 import co.jassonkm.nimblechallenge.ui.theme.White
 
 @Composable
-fun ButtonLogin(onClick: () -> Unit) {
+fun ButtonSurvey(onClick: () -> Unit) {
+
     ButtonCommon(
-        onClick = onClick, text = "Log in", color = White, myStyle = TextStyle(
+        onClick = onClick, text = "Start Survey", color = White, myStyle = TextStyle(
             fontSize = 17.sp,
             lineHeight = 22.sp,
             fontWeight = FontWeight(800),
@@ -27,12 +28,12 @@ fun ButtonLogin(onClick: () -> Unit) {
         ),
         modifier = Modifier
             .padding(0.dp)
-            .width(330.dp)
+            .width(150.dp)
             .height(58.dp)
     )
 }
 @Preview
 @Composable
-fun PreviewButtonLogin() {
-    ButtonLogin(onClick = {})
+fun ButtonSurveyPreview() {
+    ButtonSurvey(onClick = {})
 }

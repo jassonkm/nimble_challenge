@@ -17,6 +17,6 @@ fun LoginScreen(navController: NavController) {
         password = password,
         onEmailChanged = { newEmail -> email = newEmail },
         onPasswordChanged = { newPassword -> password = newPassword },
-        onLoginClicked = { /*TODO*/ },
-        onForgotPassword = {})
+        onLoginClicked = { navController.navigate("home_screen") },
+        onForgotPassword = { /*TODO*/ })
 }

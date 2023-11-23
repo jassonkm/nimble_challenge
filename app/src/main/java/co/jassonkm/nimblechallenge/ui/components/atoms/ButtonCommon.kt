@@ -14,15 +14,12 @@ import androidx.compose.ui.unit.dp
 import co.jassonkm.nimblechallenge.ui.theme.White
 
 @Composable
-fun ButtonCommon(onClick: () -> Unit, text: String, color: Color, myStyle: TextStyle) {
+fun ButtonCommon(onClick: () -> Unit, text: String, color: Color, myStyle: TextStyle, modifier: Modifier) {
     ElevatedButton(
         onClick = onClick, colors = ButtonDefaults.buttonColors(
             containerColor = color,
             contentColor = color
-        ), modifier = Modifier
-            .padding(0.dp)
-            .width(330.dp)
-            .height(58.dp)
+        ), modifier = modifier
     ) {
         Text(
             text = text, style = myStyle
