@@ -17,7 +17,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
-import co.jassonkm.nimblechallenge.data.SurveyItem
+import co.jassonkm.nimblechallenge.domain.model.SurveyItem
 
 @Composable
 @OptIn(ExperimentalFoundationApi::class)

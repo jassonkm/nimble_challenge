@@ -3,8 +3,10 @@ package co.jassonkm.nimblechallenge.ui.components.pages
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.material3.SnackbarHostState
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import co.jassonkm.nimblechallenge.ui.components.atoms.SnackbarHost
 import co.jassonkm.nimblechallenge.ui.components.templates.LoginTemplate
 import co.jassonkm.nimblechallenge.ui.theme.GradientBrush
 
@@ -15,7 +17,8 @@ fun LoginPage(
     onEmailChanged: (String) -> Unit,
     onPasswordChanged: (String) -> Unit,
     onLoginClicked: () -> Unit,
-    onForgotPassword: () -> Unit
+    onForgotPassword: () -> Unit,
+    snackbarHostState: SnackbarHostState
 ) {
     Box(
         modifier = Modifier
@@ -30,5 +33,7 @@ fun LoginPage(
             onLoginClicked = onLoginClicked,
             onForgotPassword = onForgotPassword
         )
+        SnackbarHost(snackbarHostState = snackbarHostState)
     }
+
 }

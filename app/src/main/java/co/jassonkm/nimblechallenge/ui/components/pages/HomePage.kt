@@ -17,12 +17,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import co.jassonkm.nimblechallenge.data.SurveyItem
-import co.jassonkm.nimblechallenge.ui.components.atoms.HorizontalPageIndicator
+import co.jassonkm.nimblechallenge.domain.model.SurveyItem
 import co.jassonkm.nimblechallenge.ui.components.organisms.TopBarHome
 import co.jassonkm.nimblechallenge.ui.components.templates.SurveyCard
 import co.jassonkm.nimblechallenge.ui.theme.GradientBrush
-import co.jassonkm.nimblechallenge.ui.theme.White
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable

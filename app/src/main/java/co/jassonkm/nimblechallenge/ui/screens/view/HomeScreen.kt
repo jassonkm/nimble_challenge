@@ -4,7 +4,7 @@ import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavController
-import co.jassonkm.nimblechallenge.data.SurveyItem
+import co.jassonkm.nimblechallenge.domain.model.SurveyItem
 import co.jassonkm.nimblechallenge.ui.components.pages.HomePage
 import co.jassonkm.nimblechallenge.ui.theme.GradientBrush
 
