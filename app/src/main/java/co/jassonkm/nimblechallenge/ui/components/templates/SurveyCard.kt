@@ -11,6 +11,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import co.jassonkm.nimblechallenge.data.remote.model.response.DataSurvey
 import co.jassonkm.nimblechallenge.domain.model.SurveyItem
 import co.jassonkm.nimblechallenge.ui.components.atoms.HorizontalPageIndicator
 import co.jassonkm.nimblechallenge.ui.components.organisms.HomeFooter
@@ -21,7 +22,7 @@ fun SurveyCard(
     title: String,
     description: String,
     onNextClick: () -> Unit,
-    surveyItems: List<SurveyItem>,
+    surveyItems: List<DataSurvey>,
     pagerState: PagerState
     ) {
     Column(

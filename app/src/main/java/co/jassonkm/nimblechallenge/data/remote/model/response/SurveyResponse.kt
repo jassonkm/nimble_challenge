@@ -1,5 +1,8 @@
 package co.jassonkm.nimblechallenge.data.remote.model.response
 
+import com.google.gson.annotations.SerializedName
+
 data class SurveyResponse(
-    val data: List<SurveyDetailResponse>
+    @SerializedName("data")
+    val data: List<DataSurvey>
 )

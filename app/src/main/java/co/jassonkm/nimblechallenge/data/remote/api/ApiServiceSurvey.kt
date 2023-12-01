@@ -1,10 +1,10 @@
 package co.jassonkm.nimblechallenge.data.remote.api
 
+import co.jassonkm.nimblechallenge.data.remote.model.response.SurveyDetail
 import co.jassonkm.nimblechallenge.data.remote.model.response.SurveyDetailResponse
 import co.jassonkm.nimblechallenge.data.remote.model.response.SurveyResponse
 import com.skydoves.sandwich.ApiResponse
 import retrofit2.http.GET
-import retrofit2.http.Header
 import retrofit2.http.Path
 import retrofit2.http.Query
 

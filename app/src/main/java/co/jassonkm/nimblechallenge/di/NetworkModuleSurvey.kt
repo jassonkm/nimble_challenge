@@ -3,6 +3,7 @@ package co.jassonkm.nimblechallenge.di
 import co.jassonkm.nimblechallenge.data.remote.api.ApiServiceSurvey
 import co.jassonkm.nimblechallenge.util.Constants
 import co.jassonkm.nimblechallenge.util.InterceptorToken
+import com.skydoves.sandwich.adapters.ApiResponseCallAdapterFactory
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -48,6 +49,7 @@ object NetworkModuleSurvey {
     fun provideRetrofit( @Named("survey") okHttpClient: OkHttpClient): Retrofit = Retrofit.Builder()
         .addConverterFactory(GsonConverterFactory.create())
         .baseUrl(Constants.BASE_URL)
+        .addCallAdapterFactory(ApiResponseCallAdapterFactory.create())
         .client(okHttpClient)
         .build()
 

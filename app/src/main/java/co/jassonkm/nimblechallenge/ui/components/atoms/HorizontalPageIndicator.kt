@@ -17,11 +17,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
+import co.jassonkm.nimblechallenge.data.remote.model.response.DataSurvey
 import co.jassonkm.nimblechallenge.domain.model.SurveyItem
 
 @Composable
 @OptIn(ExperimentalFoundationApi::class)
-fun HorizontalPageIndicator(surveyItems: List<SurveyItem>, pagerState: PagerState) {
+fun HorizontalPageIndicator(surveyItems:List<DataSurvey>, pagerState: PagerState) {
     Row(
         modifier = Modifier
             .wrapContentHeight()

@@ -33,7 +33,12 @@ fun LoginScreen(loginViewModel: LoginViewModel = hiltViewModel(),navController: 
     }
 
     if (isLogin == true) {
-        navController.navigate("home_screen")
+        navController.navigate("home_screen"){
+            popUpTo("login_screen"){
+                inclusive = true
+            }
+            launchSingleTop = true
+        }
     }
 
     if (!isError.isNullOrEmpty()) {

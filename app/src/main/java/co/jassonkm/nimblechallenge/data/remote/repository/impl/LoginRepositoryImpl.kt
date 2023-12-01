@@ -84,7 +84,9 @@ class LoginRepositoryImpl @Inject constructor(
             clientSecret = clientSecret
         )
         apiServiceAuth.logout(logoutRequest)
-        tokenManager.clearToken()
+            .onSuccess {
+                tokenManager.clearToken()
+            }
     }
 
     override fun isTokenExpired(): Boolean {

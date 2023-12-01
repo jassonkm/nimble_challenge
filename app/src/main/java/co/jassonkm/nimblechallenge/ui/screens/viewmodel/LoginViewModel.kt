@@ -39,33 +39,38 @@ class LoginViewModel @Inject constructor(
     fun onLogin(
         user: User
     ) {
-        viewModelScope.launch {
-            _isLoading.postValue(true)
-            if (networkUtils.isNetworkAvailable()) {
-                loginUseCase.invoke(user)
-                    .onSuccess {
-                        _isLoading.postValue(false)
-                        Log.i(TAG, "onLogin: Login completed")
-                        _isLogin.postValue(true)
-                    }
-                    .onError {
-                        _isLoading.postValue(false)
-                        Log.e(TAG, "onLogin: error log  ${response.errorBody()}", )
-                        _isLogin.postValue(false)
-                        _error.postValue(response.errorBody()?.string())
-                    }
-                    .onFailure {
-                        _isLoading.postValue(false)
-                        _isLogin.postValue(false)
-                        _error.postValue("email or password is incorrect")
-                    }
-            }
-            else {
-                _isLoading.postValue(false)
-                _isLogin.postValue(false)
-                _error.postValue("No internet connection")
-            }
+        try {
+            viewModelScope.launch {
+                _isLoading.postValue(true)
+                if (networkUtils.isNetworkAvailable()) {
+                    loginUseCase.invoke(user)
+                        .onSuccess {
+                            _isLoading.postValue(false)
+                            Log.i(TAG, "onLogin: Login completed")
+                            _isLogin.postValue(true)
+                        }
+                        .onError {
+                            _isLoading.postValue(false)
+                            Log.e(TAG, "onLogin: error log  ${response.errorBody()}")
+                            _isLogin.postValue(false)
+                            _error.postValue(response.errorBody()?.string())
+                        }
+                        .onFailure {
+                            _isLoading.postValue(false)
+                            _isLogin.postValue(false)
+                            _error.postValue("Email or password is incorrect")
+                        }
+                } else {
+                    _isLoading.postValue(false)
+                    _isLogin.postValue(false)
+                    _error.postValue("No internet connection")
+                }
 
+            }
+        } catch (e: Exception) {
+            _isLoading.postValue(false)
+            _isLogin.postValue(false)
+            _error.postValue(e.message)
         }
 
     }
