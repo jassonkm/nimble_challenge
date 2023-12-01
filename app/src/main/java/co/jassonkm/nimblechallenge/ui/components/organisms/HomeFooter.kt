@@ -9,15 +9,11 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.pager.PagerState
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import co.jassonkm.nimblechallenge.R
-import co.jassonkm.nimblechallenge.data.SurveyItem
 import co.jassonkm.nimblechallenge.ui.components.atoms.ButtonIconCommon
-import co.jassonkm.nimblechallenge.ui.components.atoms.HorizontalPageIndicator
 import co.jassonkm.nimblechallenge.ui.components.molecules.TextDescription
 import co.jassonkm.nimblechallenge.ui.theme.White
 

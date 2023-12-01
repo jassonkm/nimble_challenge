@@ -2,33 +2,51 @@ package co.jassonkm.nimblechallenge.ui.screens.view
 
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.pager.rememberPagerState
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.livedata.observeAsState
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
-import co.jassonkm.nimblechallenge.data.SurveyItem
 import co.jassonkm.nimblechallenge.ui.components.pages.HomePage
-import co.jassonkm.nimblechallenge.ui.theme.GradientBrush
+import co.jassonkm.nimblechallenge.ui.screens.viewmodel.HomeViewModel
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
-fun HomeScreen(navController: NavController) {
-    val surveyItems = listOf(
-        SurveyItem(
-            title = "Working from home Check-In 1",
-            description = "We would like to know how you feel about our work from home...",
-            coverImageUrl = ""
-        ),
-        SurveyItem(
-            "Inclusion and belonging",
-            "Building a workplace culture that prioritizes belonging and inclusio...",
-            ""
+fun HomeScreen(homeViewModel: HomeViewModel = hiltViewModel(), navController: NavController) {
+    LaunchedEffect(Unit) {
+        homeViewModel.getSurveys()
+    }
+
+    val pagerState = rememberPagerState()
+
+    val isSurveyList by homeViewModel.surveyList.observeAsState()
+    val isNotSessionActive by homeViewModel.isNotActiveSession.observeAsState()
+    val surveyId = isSurveyList?.get(pagerState.currentPage)?.id
+    if (isNotSessionActive == true) {
+        LaunchedEffect(Unit) {
+            navController.popBackStack()
+        }
+    }
+    fun logout() {
+        homeViewModel.logout()
+    }
+
+    fun goToSurveyDetail() {
+        navController.navigate("survey_detail_screen/${surveyId}")
+    }
+
+    if (isSurveyList == null) {
+        CircularProgressIndicator()
+    } else {
+        HomePage(
+            date = homeViewModel.getCurrentDateFormattedString(),
+            onClickLogout = { logout() },
+            surveyItems = isSurveyList!!,
+            pagerState = pagerState,
+            onCLickNext = { goToSurveyDetail() },
         )
-    )
-    HomePage(
-        date = "Monday, JUNE 15",
-        onClickLogout = { /*TODO*/ },
-        surveyItems = surveyItems,
-        pagerState = rememberPagerState(),
-        painterBrush = GradientBrush,
-        onCLickNext = {navController.navigate("survey_detail_screen")},
-    )
+    }
 }
+

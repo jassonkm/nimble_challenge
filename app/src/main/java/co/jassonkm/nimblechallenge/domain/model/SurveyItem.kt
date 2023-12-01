@@ -1,4 +1,4 @@
-package co.jassonkm.nimblechallenge.data
+package co.jassonkm.nimblechallenge.domain.model
 
 data class SurveyItem(
     val title: String,
