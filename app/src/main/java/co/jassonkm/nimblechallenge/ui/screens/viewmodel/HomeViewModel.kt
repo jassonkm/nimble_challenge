@@ -8,6 +8,7 @@ import co.jassonkm.nimblechallenge.data.remote.model.response.DataSurvey
 import co.jassonkm.nimblechallenge.domain.usecases.IsTokenActiveUseCase
 import co.jassonkm.nimblechallenge.domain.usecases.LogoutUseCase
 import co.jassonkm.nimblechallenge.domain.usecases.SurveyListUseCase
+import co.jassonkm.nimblechallenge.util.DateProvider
 import co.jassonkm.nimblechallenge.util.NetworkUtils
 import com.skydoves.sandwich.onError
 import com.skydoves.sandwich.onFailure
@@ -24,7 +25,8 @@ class HomeViewModel @Inject constructor(
     private val surveyListUseCase: SurveyListUseCase,
     private val networkUtils: NetworkUtils,
     private val isTokenActiveUseCase: IsTokenActiveUseCase,
-    private val logoutUseCase: LogoutUseCase
+    private val logoutUseCase: LogoutUseCase,
+    private val dateProvider: DateProvider
 ) : ViewModel() {
 
     private val TAG = "HomeViewModel"
@@ -44,7 +46,7 @@ class HomeViewModel @Inject constructor(
                         surveyListUseCase.invoke()
                             .onSuccess {
                                 _surveyList.postValue(response.body()?.data)
-                                Log.i(TAG, "getSurveys: ")
+                                Log.i(TAG, "getSurveys: completed")
                             }
                             .onError {
                                 Log.e(TAG, "getSurveys: ${response.errorBody()}")
@@ -79,10 +81,6 @@ class HomeViewModel @Inject constructor(
 
         }
     }
-    fun getCurrentDateFormattedString(): String {
-        val calendar = Calendar.getInstance()
-        val dateFormat = SimpleDateFormat("EEEE, MMMM d", Locale.ENGLISH)
-        return dateFormat.format(calendar.time).uppercase()
-    }
+    fun getCurrentDateFormattedString(): String = dateProvider.getCurrentDateFormattedString()
 
 }

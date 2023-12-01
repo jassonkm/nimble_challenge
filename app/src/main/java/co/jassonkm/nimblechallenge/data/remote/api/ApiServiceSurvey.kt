@@ -15,7 +15,7 @@ interface ApiServiceSurvey {
         @Query("page[size]") pageSize: Int
     ): ApiResponse<SurveyResponse>
 
-    @GET("surveys")
+    @GET("surveys/{survey_id}")
     suspend fun getSurveyDetail(
         @Path("survey_id") surveyId: String
     ): ApiResponse<SurveyDetailResponse>

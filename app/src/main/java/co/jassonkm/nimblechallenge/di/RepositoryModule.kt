@@ -5,6 +5,7 @@ import co.jassonkm.nimblechallenge.data.remote.repository.LoginRepository
 import co.jassonkm.nimblechallenge.data.remote.repository.SurveyRepository
 import co.jassonkm.nimblechallenge.data.remote.repository.impl.LoginRepositoryImpl
 import co.jassonkm.nimblechallenge.data.remote.repository.impl.SurveyRepositoryImpl
+import co.jassonkm.nimblechallenge.util.DateProvider
 import co.jassonkm.nimblechallenge.util.TokenManager
 import dagger.Module
 import dagger.Provides
@@ -28,4 +29,8 @@ object RepositoryModule {
     @Provides
     @Singleton
     fun provideSurveyRepository(surveyRepositoryImpl: SurveyRepositoryImpl): SurveyRepository = surveyRepositoryImpl
+
+    @Provides
+    @Singleton
+    fun provideDateProvider(): DateProvider = DateProvider()
 }

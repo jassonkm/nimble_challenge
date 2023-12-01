@@ -23,13 +23,18 @@ fun HomeScreen(homeViewModel: HomeViewModel = hiltViewModel(), navController: Na
 
     val isSurveyList by homeViewModel.surveyList.observeAsState()
     val isNotSessionActive by homeViewModel.isNotActiveSession.observeAsState()
+    val surveyId = isSurveyList?.get(pagerState.currentPage)?.id
     if (isNotSessionActive == true) {
-        LaunchedEffect(Unit){
+        LaunchedEffect(Unit) {
             navController.popBackStack()
         }
     }
     fun logout() {
         homeViewModel.logout()
+    }
+
+    fun goToSurveyDetail() {
+        navController.navigate("survey_detail_screen/${surveyId}")
     }
 
     if (isSurveyList == null) {
@@ -40,10 +45,8 @@ fun HomeScreen(homeViewModel: HomeViewModel = hiltViewModel(), navController: Na
             onClickLogout = { logout() },
             surveyItems = isSurveyList!!,
             pagerState = pagerState,
-            onCLickNext = { navController.navigate("survey_detail_screen") },
+            onCLickNext = { goToSurveyDetail() },
         )
     }
-
-
 }
 
